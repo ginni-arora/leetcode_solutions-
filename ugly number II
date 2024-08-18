@@ -4,7 +4,7 @@ public:
         vector<int> ugly(n);
         ugly[0] = 1;
         
-        int i2 = 0, i3 = 0, i4 = 0;
+        int i2 = 0, i3 = 0, i4 = 0,i5 = 0;
         int next_2 = 2, next_3 = 3, next_5 = 5;
 
         for (int i = 1; i < n; ++i) {
