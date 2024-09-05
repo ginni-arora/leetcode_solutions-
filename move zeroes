@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void moveZeroes(vector<int>& nums) {
+    int nonZeroIndex = 0; // Keep track of the position to place non-zero elements
+    
+    // Loop through the array and move all non-zero elements to the front
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] != 0) {
+            nums[nonZeroIndex] = nums[i]; // Place non-zero element at the nonZeroIndex
+            nonZeroIndex++; // Increment the index for the next non-zero element
+        }
+    }
+    
+    // Fill the rest of the array with zeroes
+    for (int i = nonZeroIndex; i < nums.size(); i++) {
+        nums[i] = 0;
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+    
+    vector<int> nums(n);
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    moveZeroes(nums);
+
+    cout << "Array after moving zeroes: ";
+    for (int i = 0; i < nums.size(); i++) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
