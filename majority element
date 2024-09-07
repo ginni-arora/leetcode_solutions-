@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int majorityElement(vector<int>& nums) {
+    int count = 0;
+    int candidate = 0;
+
+    // Boyer-Moore Voting Algorithm
+    for (int num : nums) {
+        if (count == 0) {
+            candidate = num;  // Set the current number as the candidate
+        }
+        // If current number equals candidate, increment the count; otherwise decrement.
+        count += (num == candidate) ? 1 : -1;// ternary operator 
+    }
+
+    return candidate;  // The majority element
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of elements: ";
+    cin >> n;
+
+    vector<int> nums(n);
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    int majority = majorityElement(nums);
+    cout << "The majority element is: " << majority << endl;
+
+    return 0;
+}
