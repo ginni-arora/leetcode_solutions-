@@ -1,0 +1,38 @@
+#include <iostream> // For std::cout and std::endl
+#include <algorithm> // For std::gcd
+
+class Solution {
+public:
+    bool canMeasureWater(int x, int y, int target) {
+        // If target is 0, we can always measure it by doing nothing
+        if (target == 0) {
+            return true;
+        }
+
+        // If target is greater than the total capacity of both jugs, it's impossible
+        if (target > x + y) {
+            return false;
+        }
+
+        // Compute the GCD of the two jug capacities
+        int gcd = std::gcd(x, y);
+
+        // If target is a multiple of the GCD of x and y, it's achievable
+        return target % gcd == 0;
+    }
+};
+
+int main() {
+    Solution solution;
+
+    // Example test cases
+    int x = 5; // Capacity of the first jug
+    int y = 7; // Capacity of the second jug
+    int target = 8; // Target volume to measure
+
+    bool result = solution.canMeasureWater(x, y, target);
+
+    std::cout << "Can measure " << target << " liters: " << (result ? "Yes" : "No") << std::endl;
+
+    return 0;
+}
