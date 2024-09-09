@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+         // Total gas and total cost ka sum track karne ke liye variables
+        int totalGas = 0, totalCost = 0;
+        // Current gas aur starting point ka index
+        int currentGas = 0, startIndex = 0;
+
+        // Sab gas stations ke liye loop
+        for (int i = 0; i < gas.size(); i++) {
+            // Total gas aur total cost ko update karna
+            totalGas += gas[i]; // Gas station se mile gas ko add karna
+            totalCost += cost[i]; // Gas station tak pahunchne ka cost add karna
+             // Current gas ko update karna
+            currentGas += gas[i] - cost[i]; // Current gas ko calculate karna
+             // Agar current gas negative ho jata hai
+            if (currentGas < 0) {
+                // Toh starting index ko next station par shift karna
+                startIndex = i + 1; // Next station se shuru karna
+                currentGas = 0; // Current gas ko reset karna
+            }
+        }
+      // Agar total gas total cost se zyada hai, toh circuit complete ho sakta hai
+        return (totalGas >= totalCost) ? startIndex : -1; // Agar complete kar sakte hain toh startIndex return karna, nahi toh -1
+    }
+};
