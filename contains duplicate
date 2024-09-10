@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+         unordered_set<int> seen;// Ek unordered set banate hain, jisme hum unique elements store karenge
+  for (int i = 0; i < nums.size(); i++) {
+            // Agar number already set mein hai, iska matlab duplicate hai
+            if (seen.find(nums[i]) != seen.end()) {
+                return true;// Duplicate mila, true return karo
+            }
+           // Agar number set mein nahi hai, toh isse set mein add karo
+            seen.insert(nums[i]);
+        }
+        // agar hume duplicate nhi find hua to hum return false kra denge 
+        return false;
+    }
+};
+  
