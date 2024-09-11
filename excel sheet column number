@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int titleToNumber(string columnTitle) {
+        // Agar columnTitle khali hai, toh 0 return karo
+        if (columnTitle.empty()) return 0;
+        
+        // Ek integer variable 'result' banao aur ise 0 se initialize karo
+        int result = 0;
+        
+        // columnTitle ki length mein loop chalaao
+        for (int i = 0; i < columnTitle.length(); i++) {
+            // 'result' ko 26 se multiply karo
+            result *= 26;
+            
+            // columnTitle[i] ko 'A' se subtract karo aur ise 1 jodo
+            // Isse 'A' ko 1, 'B' ko 2, ... 'Z' ko 26 milega
+            result += (columnTitle[i] - 'A' + 1);
+        }
+        
+        // 'result' return karo
+        return result;
+    }
+};
