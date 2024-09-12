@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> ans(n + 1);  // n + 1 size ka ek result vector banao
+        ans[0] = 0;               // 0 mein koi 1 bits nahi hain
+        for (int i = 1; i <= n; i++) { // 1 se n tak loop chalao
+
+      // Upar bataye gaye relation ka istemal karte hue ans[i] ki calculation kara
+      ans[i] = ans[i >> 1] + (i & 1);  // i ko 2 se divide karte hue aur uska last bit check kara
+     }
+         return ans;  // ans vector ko return kara
+    }
+};
