@@ -1,0 +1,21 @@
+class Solution {
+public:
+    double myPow(double x, int n) {
+        // Agar n zero hai, to 1 return karo
+        if (n == 0) {
+            return 1;
+        }
+        // Agar n negative hai, to 1 ko x se divide karo aur n ko positive karo
+        if (n < 0) {
+            return 1 / x * myPow(1 / x, -(n + 1));
+        }
+        // Agar n even hai, to x ko square karo aur n ko half karo
+        if (n % 2 == 0) {
+            return myPow(x * x, n / 2);
+        }
+        // Agar n odd hai, to x ko return karo aur n-1 ko recursively solve karo
+        else {
+            return x * myPow(x, n - 1);
+        }    
+    }
+};
