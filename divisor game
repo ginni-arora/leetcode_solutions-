@@ -1,0 +1,9 @@
+class Solution {
+public:
+    bool divisorGame(int n) {
+        // Agar n even hai, to Alice jeetegi, warna Bob jeetega
+    return n % 2 == 0;
+
+        
+    }
+};
