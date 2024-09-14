@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int calPoints(vector<string>& ops) {
+        vector<int> scores;  // scores ko mein is vector m store karaogi 
+    // Har operation ko process kara maine
+    for (int i = 0; i < ops.size(); i++) {
+        string op = ops[i];  // Current operation liya maine 
+     if (op == "+") { 
+            int newScore = scores[scores.size() - 1] + scores[scores.size() - 2];// + operation ayega  to last do scores ka sum karugi 
+            scores.push_back(newScore);  // Result ko scores mein add kara maine 
+        } else if (op == "D") {
+            //D operation aya last score ka double karugi mein
+            int newScore = 2 * scores.back();
+            scores.push_back(newScore);  // Double score ko add karte hain
+        } else if (op == "C") {
+            scores.pop_back();  // Last score hata diya 
+        } else {
+            // Agar operation ek number hai, to usko integer mein convert karke add kardiya maine 
+            scores.push_back(stoi(op));  // String ko number mein convert karke scores mein daala 
+        }
+    }
+    int totalScore = 0;// total scpore ko maine 0 se initialise karaya 
+    for (int i = 0; i < scores.size(); i++) {
+        totalScore += scores[i];  // har score ka sum kra 
+    }
+    return totalScore; 
+}
+    
+};
