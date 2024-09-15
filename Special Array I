@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isArraySpecial(vector<int>& nums) {
+       if (nums.size() == 1) { // array mein agar 1 element h to m return krwa dungi 
+        return true;
+    }
+    for (int i = 0; i < nums.size() - 1; i++) {
+         if ((nums[i] % 2 == nums[i + 1] % 2)) {// m check krugi ki 1 no aur uske sath vala number (odd or even )parity same h ki nhi 
+           return false; // no. same parity ke h 
+        }
+    }
+    return true;// same parity ke nhi h
+        
+    }
+};
