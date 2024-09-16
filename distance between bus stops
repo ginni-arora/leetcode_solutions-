@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int distanceBetweenBusStops(vector<int>& d, int start, int dest) {//d-distance 
+    if (start > dest) {// start mera dest se bda h to m swap kr dungi small se large index tk 
+        swap(start, dest); 
+    }
+    int cd = 0;  // clock wise d ko maien 0 se initialise kr diya 
+    for (int i = start; i < dest; i++) {  
+        cd += d[i];  // Current distance ko clockwise m assign kr diya 
+    }
+    int td = 0;  // Total distance bhi 0 se start karenge
+    for (int i = 0; i < d.size(); ++i) {  
+        td += d[i];  // meine current d ko total distance m add kra 
+    }
+    int countercd = td - cd;  // Counterclockwise distance  nikala or usme se total d ko current d se minus kr diya maine
+    return min(cd, countercd);  // min ka use karke chhoti value return karenge
+}
+};
