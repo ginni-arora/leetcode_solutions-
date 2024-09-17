@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        unordered_map<char, int> freq;// map bnaya char ko store krne ke liye 
+        for (int i = 0; i < text.size(); i++) {
+            freq[text[i]]++;  //increment hota gya 
+        }
+        int b_count = freq['b'];      //jo char chahiye uska count nikal liya 
+        int a_count = freq['a'];    
+        int l_count = freq['l'] / 2;    
+        int o_count = freq['o'] / 2;   
+        int n_count = freq['n'];        
+        return min({b_count, a_count, l_count, o_count, n_count});//min ka use krkr m min char ka count nikal lungi 
+    }
+};
+        
