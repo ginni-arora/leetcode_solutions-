@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int addDigits(int num) {
+        if (num == 0) {
+            return 0;
+        }
+        // Agar num 9 se divide ho jata hai or num zero nhi hai to 9 return kr diya 
+        if (num % 9 == 0) {
+            return 9;
+        }
+        return num % 9;
+    }
+};
+   
