@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void duplicateZeros(vector<int>& a) {
+        int n = a.size();
+        int count = 0; // elements ko track krne ke liye 
+        for (int i = 0; i < n; i++) {
+            if (a[i] == 0) {
+                count++;
+            }
+        }
+           int j = n + count - 1;
+           for (int i = n - 1; i >= 0; i--) {//avoid krega overwriting agar m backward krugi 
+            if (j < n) {
+                a[j] = a[i]; // current element ko copy krkr naye element m store kra dega 
+            }
+            if (a[i] == 0) {
+                j--; 
+                if (j < n) {
+                    a[j] = 0;
+                }
+            }
+            j--; // next position pr move kr dega 
+        }
+    }
+};
