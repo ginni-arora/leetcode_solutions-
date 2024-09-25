@@ -1,0 +1,7 @@
+class Solution {
+public:
+    int findDelayedArrivalTime(int aT, int dT) {
+        return (aT+dT)%24;//at= arrival time , dt = delay time 
+        
+    }
+};
