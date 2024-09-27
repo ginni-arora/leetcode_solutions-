@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int left = 0; // Maine search range ka start point set kiya
+        int right = nums.size() - 1; // Maine search range ka end point set kiya
+        
+        while (left <= right) { // Jab tak search range valid hai
+            int mid = left + (right - left) / 2; // Maine mid index calculate kiya
+            
+            if (nums[mid] == target) {
+                return mid; // Agar target mil gaya, to mid index return karugi m 
+            } else if (nums[mid] < target) {
+                left = mid + 1; // Agar mid ka value target se chhota hai, to right half mein search karugi
+            } else {
+                right = mid - 1; // Agar mid ka value target se bada hai, to left half mein search karugi 
+            }
+        }
+        
+        return -1; // Agar target nahi mila, to -1 return karugi 
+    }
+};
+   
