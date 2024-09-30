@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int timeRequiredToBuy(vector<int>& tick, int k) {
+        int time = 0;
+        int n = tick.size(); 
+
+        while (tick[k] > 0) { // continue krege jab tk k ke pas koi bhi ticket left nhi reh jati 
+            for (int i = 0; i < n; i++) {
+                if (tick[i] > 0) {
+                    tick[i]--; 
+                    time++; 
+                    if (i == k && tick[k] == 0) {//ab agar koi bhi ticket mhi bchegi to m break kr dungi 
+                        return time; 
+                    }
+                }
+            }
+        }
+
+        return time;
+        
+    }
+};
