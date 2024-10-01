@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string reverseVowels(string s) {
+         unordered_set<char> v= {'a', 'e', 'i', 'o', 'u',  'A', 'E', 'I', 'O', 'U'}; //ek unordred set bnaya 
+        int left = 0; 
+        int right = s.size() - 1; 
+        while (left < right) {//two ppointer approach lgayi 
+            while (left < right && v.find(s[left]) == v.end()) {
+                left++;
+            }
+            while (left < right && v.find(s[right]) == v.end()) {
+                right--;
+            }
+            if (left < right) {
+                swap(s[left], s[right]);
+                left++;
+                right--;
+            }
+        }
+
+        return s;         
+    }
+};
