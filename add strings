@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+class Solution{
+	public:
+		string addstr(string st1, string st2){//maine function bnaya 
+			string result;
+			int carry=0;
+			//ab m pointers lungi jinhe m string ke end m dalugi
+			int i=st1.size()-1;
+			int j=st2.size()-1;
+			//ab m loop chalaogi
+			while(i>=0 || j>=0 || carry>0){
+				int sum=carry;//sum ko maine carry se shuru kra 
+				if(i>=0){
+					sum+=st1[i]-'0';//char ko int m convert 
+					i--;
+				}
+				if(j>=0){
+					sum+=st2[j]-'0';
+					j--;
+				}
+				carry=sum/10;
+				result.push_back((sum%10)+'0');
+				
+			}
+			//AB M REVERSE KRUGI
+			reverse(result.begin(),result.end());
+			return result;
+			}
+};
+int main(){
+	Solution obj;
+	string st1="123";
+	string st2="456";
+	string result=obj.addstr(st1,st2);
+	cout<<"sum: "<<result<<endl;
+	return 0;
+}
