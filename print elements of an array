@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    void printArray(const vector<int>& arr) {
+        for (int i = 0; i < arr.size(); i++) {
+            cout << arr[i] << " "; 
+        }
+        cout << endl; 
+    }
+};
+int main() {
+    Solution obj; 
+    vector<int> arr = {10, 20, 30, 40, 50}; 
+    obj.printArray(arr); 
+    return 0; 
+}
