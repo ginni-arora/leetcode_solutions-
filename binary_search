@@ -1,0 +1,34 @@
+#include <bits/stdc++.
+using namespace std;
+class Solution {
+public:
+    int binarysearch(vector<int> &arr, int k) {
+        int low = 0;                  // Low pointer ko 0 se initialize karta
+        int high = arr.size() - 1;   // High pointer ko array ke last index par set kiya 
+        // Jab tak low pointer high pointer se chhota ya barabar hai, loop chalta rahega
+        while (low <= high) {         
+            // Midpoint calculate kiya 
+            int mid = low + (high - low) / 2; 
+            if (arr[mid] == k) {      // Agar mid element target se barabar hai to mera target mil gya 
+                return mid;         
+            }
+            else if (arr[mid] < k) {  // Agar mid element target se chhota hai
+                low = mid + 1;        // to wo right half m dekhega 
+            }
+            else {                     // Agar mid element target se bada hai
+                high = mid - 1;       // left side m dekhega 
+            }
+        }
+        return -1;                
+    }
+};
+
+int main() {
+    Solution solution;                         
+    vector<int> arr = {1, 3, 5, 7, 9, 11};     
+    int target = 7;                            
+    int result = solution.binarysearch(arr, target); 
+    if (result != -1) {
+        cout << "Element found at index: " << result << endl; 
+    } else {
+        cout << "Element not found in array." << endl;    
