@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minimumBoxes(vector<int>& app, vector<int>& cap) {
+        sort(cap.rbegin(), cap.rend());
+        int ta = 0;//total apples 
+        for (int i = 0; i < app.size(); i++) {
+            ta += app[i];
+        }
+        int box = 0;//box used
+        for (int i = 0; i < cap.size(); ++i) {
+            ta -= cap[i]; // Subtract current box capacity from total apples
+            box++;               
+            if (ta<= 0) {//check krna h ki sare apple distribute hue ya mhi 
+                return box; 
+            }
+        } 
+        return box; 
+        
+    }
+};
