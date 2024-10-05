@@ -1,0 +1,18 @@
+void reverseArray(vector<int>& arr, int start, int end) {//reverse 
+    while (start < end) {
+        swap(arr[start], arr[end]);
+        start++;
+        end--;
+    }
+}
+
+// Function to rotate the array
+void rotateArr(vector<int>& arr, int d) {
+    int n = arr.size();
+    d = d % n; // Handle cases where d> n
+    reverseArray(arr, 0, d - 1);//pehle d elements ko reverse 
+    reverseArray(arr, d, n - 1);//fir remaining ekements ko 
+    reverseArray(arr, 0, n - 1);//pure array ko reverse
+
+}
+};
