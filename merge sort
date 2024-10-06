@@ -1,0 +1,47 @@
+void merge(int arr[], int l, int m, int r)
+    {
+         int n1 = m - l + 1; // 1 subarray ka size
+        int n2 = r - m;     // 2 subarray ka size
+
+        int leftArr[n1], rightArr[n2]; // temporary arrays banaya 
+        for (int i = 0; i < n1; i++)// Left subarray ke elements ko copy kra 
+            leftArr[i] = arr[l + i];
+        for (int i = 0; i < n2; i++)//aise hi right ke sath
+            rightArr[i] = arr[m + 1 + i];
+        int i = 0, j = 0, k = l; // Index variables
+        while (i < n1 && j < n2) {//sort krege 
+            if (leftArr[i] <= rightArr[j]) {
+                arr[k] = leftArr[i];
+                i++;
+            } else {
+                arr[k] = rightArr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1) {//left variables ke array ko copy krte h 
+            arr[k] = leftArr[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {//aise hi right vake ke sath
+            arr[k] = rightArr[j];
+            j++;
+            k++;
+        }
+    }
+
+public:
+    void mergeSort(int arr[], int l, int r) {
+        if (l < r) {
+            // Array ko do parts mein divide kara
+            int m = l + (r - l) / 2;
+     // Pehle half ko recursively sort kara
+            mergeSort(arr, l, m);
+    // Doosre half ko recursively sort kara
+            mergeSort(arr, m + 1, r);
+    // Dono halves ko merge kara
+            merge(arr, l, m, r);
+        }
+    }
+};
